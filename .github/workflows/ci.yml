@@ -34,17 +34,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-
-        # checkout the repo
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
-  lint:
-    # checks the formatting odf code is all good
-
-    runs-on: ubuntu-latest
-    steps:
-
+          
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
@@ -52,6 +42,15 @@ jobs:
           architecture: "x64"
         env:
           AGENT_TOOLSDIRECTORY: /opt/hostedtoolcache
+
+  lint:
+    # checks the formatting odf code is all good
+
+    runs-on: ubuntu-latest
+    steps:
+      # checkout the repo
+      - name: Check out Git repository
+        uses: actions/checkout@v2
 
       - name: Install Python dependencies
         run: pip install black
