@@ -35,14 +35,7 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-  run-linters:
-    name: Run linters
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
+      # set up python
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
@@ -51,6 +44,13 @@ jobs:
         env:
           AGENT_TOOLSDIRECTORY: /opt/hostedtoolcache
 
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+  lint:
+    # checks the formatting odf code is all good
+    runs-on: ubuntu-latest
+    steps:
       - name: Install Python dependencies
         run: pip install black
 
