@@ -35,24 +35,15 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-      # set up python
-      - name: Set up Python
-        uses: actions/setup-python@v1
-        with:
-          python-version: 3.10.12
-          architecture: "x64"
-        env:
-          AGENT_TOOLSDIRECTORY: /opt/hostedtoolcache
+        # checkout the repo
+      - name: Check out Git repository
+        uses: actions/checkout@v2
 
   lint:
     # checks the formatting odf code is all good
 
-    name: lint
     runs-on: ubuntu-latest
     steps:
-        # checkout the repo
-      - name: Check out Git repository
-        uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v1
