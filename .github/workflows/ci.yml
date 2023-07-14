@@ -43,7 +43,7 @@ jobs:
         env:
           AGENT_TOOLSDIRECTORY: /opt/hostedtoolcache
 
-  black:
+  lint:
     # checks the formatting of code is all good
 
     runs-on: ubuntu-latest
@@ -57,6 +57,4 @@ jobs:
         run: pip install black
 
       - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          black: true
+        run: black --check --verbose .
