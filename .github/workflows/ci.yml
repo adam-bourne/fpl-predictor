@@ -43,10 +43,6 @@ jobs:
         env:
           AGENT_TOOLSDIRECTORY: /opt/hostedtoolcache
 
-      # install the packages we need
-      - name: Install Python dependencies
-        run: pip install black
-
   black:
     # checks the formatting of code is all good
 
@@ -55,6 +51,10 @@ jobs:
       # checkout the repo
       - name: Check out Git repository
         uses: actions/checkout@v2
+
+      # install the packages we need
+      - name: Install Python dependencies
+        run: pip install black
 
       - name: Run linters
         uses: wearerequired/lint-action@v2
