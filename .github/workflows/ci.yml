@@ -35,7 +35,6 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
 
-      # set up python
       - name: Set up Python
         uses: actions/setup-python@v1
         with:
@@ -45,17 +44,17 @@ jobs:
           AGENT_TOOLSDIRECTORY: /opt/hostedtoolcache
 
   lint:
-    # checks the formatting odf code is all good
+    # checks the formatting of code is all good
+
     runs-on: ubuntu-latest
     steps:
-        # checkout the repo
+      # checkout the repo
       - name: Check out Git repository
         uses: actions/checkout@v2
 
+      # install the packages we need
       - name: Install Python dependencies
         run: pip install black
 
       - name: Run linters
-        uses: wearerequired/lint-action@v2
-        with:
-          black: true
+        run: black --check --verbose .
