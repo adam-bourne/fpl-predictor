@@ -44,13 +44,14 @@ jobs:
         env:
           AGENT_TOOLSDIRECTORY: /opt/hostedtoolcache
 
-      - name: Check out Git repository
-        uses: actions/checkout@v2
-
   lint:
     # checks the formatting odf code is all good
     runs-on: ubuntu-latest
     steps:
+        # checkout the repo
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
       - name: Install Python dependencies
         run: pip install black
 
