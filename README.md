@@ -12,7 +12,7 @@ This stage will use the PyTorch deep learning framework as the basis of the ML m
 #### Modelling Investigation
 The first step is to at least confirm if a player's performance can be predicted using data, from here we will know whether this project is feasible. 
 
-#### Findings - see notebooks/03_network_training.ipynb for details
+#### Findings - see notebooks/week_by_week_predictor/03_network_training.ipynb for details
 1. After trying numerous hyperparameter combinations, it seems that the network quickly reaches a limit to how well it can learn the data, as the validation loss does not decrease after ~30 epochs of training. This, I believe, is due to the large variation in a given player's performance week by week.
 2. Without making any plots, it did at least seem like the model was reasonably accurate at predicting when a player might score more than the average points, although exact preidctions were less common (e.g. predicted points==6, actual points==9 - both are high but the prediction is not technically correct). Because of this, any week by week model should only ever be used as a guide to estimate the highest scoring players in a gameweek, not necessarily as an accurate indicator of that player's exact points.
 3. However, it certainly seemed like over a long period (e.g. a few months), the model could be accurate at understanding whether a player is 'unlucky' (model suggests a player should be getting more points than they are, so they are 'due' to start getting points soon) or simply just not performing (model predicts a low number of points).
@@ -23,3 +23,12 @@ This stage will aim to use data science to track the long term trends in a playe
 
 #### Modelling Investigation - ONGOING
 For this section, I have decided to build separate models for each player position (GKP, DEF, MID and FWD) because each rely on pretty different underlying data to predict their FPL points. The basic idea will be to create a model which predicts a player's points across multiple games or a whole season. For example, rather than predict a player's points in an individual week, this model will take in a player's underlying stats for the whole season up to that point, and try to understand how many points that player should be on. 
+
+##### Goalkeeper Model
+Model training and pipeline details can be found at `notebooks/performance_tracking/03_goalkeeper_model.ipynb`
+- features:
+  - cumulative_goals_conceded
+  - cumulative_saves
+  - cumulative_influence // influence is a stat provided FPL which measures a player's influence in determining the outcome of games
+- r2
+  - 0.86
