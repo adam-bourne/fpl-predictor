@@ -18,10 +18,10 @@ The first step is to at least confirm if a player's performance can be predicted
 3. However, it certainly seemed like over a long period (e.g. a few months), the model could be accurate at understanding whether a player is 'unlucky' (model suggests a player should be getting more points than they are, so they are 'due' to start getting points soon) or simply just not performing (model predicts a low number of points).
 4. From these findings, it seems like there is simply too much outside factors not captured in our data to make accurate predictions week by week. Factors such as player fatigue, opposition tactics, morale etc cannot be captured in the data we have, and therefore too much random variation occurs to make weekly predictions - for now, this project idea is paused.
 
-### 2. Analysing long term trends
+### 2. Analysing long term trends - ONGOING
 This stage will aim to use data science to track the long term trends in a player's performance, and try to understand if they are overperforming (scoring more points than their underlying statistics suggest) or underperforming (scoring less points than their underlying statistics suggest). Having this data helps managers understand whether to transfer a player in/out
 
-#### Modelling Investigation - ONGOING
+#### Modelling Investigation
 For this section, I have decided to build separate models for each player position (GKP, DEF, MID and FWD) because each rely on pretty different underlying data to predict their FPL points. The basic idea will be to create a model which predicts a player's points across multiple games or a whole season. For example, rather than predict a player's points in an individual week, this model will take in a player's underlying stats for the whole season up to that point, and try to understand how many points that player should be on. 
 
 ##### Goalkeeper Model
